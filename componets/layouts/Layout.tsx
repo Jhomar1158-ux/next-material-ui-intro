@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {FC} from 'react'
+import { Navbar } from '../ui/Navbar'
 
 
 interface Props {
@@ -16,7 +17,7 @@ export const Layout: FC<Props> = ({children, title}) => {
                 <meta name='description' content={`Tienda de productos | ${title}`}/>
                 <meta name='keywords' content={`${title}, Productos, producto, item, items, tienda, e-commerce, marketplace`}/>
             </Head>
-            {/* Navbar */}
+            <Navbar/>
             <main>
                 {children}
             </main>
