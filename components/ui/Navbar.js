@@ -2,6 +2,7 @@ import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SettingsInputSvideoIcon from '@mui/icons-material/SettingsInputSvideo';
+import Link from 'next/link';
 
 export const Navbar = () => {
     return (
@@ -12,20 +13,22 @@ export const Navbar = () => {
                 p: 1,
                 m: 1,
             }}> 
-                <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    maxWidth: 300,
-                    p: 1,
-                    m: 1,
-                }}>
-                    <IconButton>
-                        <SettingsInputSvideoIcon/>
-                    </IconButton>
-                    <Typography>Logo</Typography>
-                </Box>
+                <Link href={'/'}>
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        maxWidth: 300,
+                        p: 1,
+                        m: 1,
+                    }}>
+                        <IconButton>
+                            <SettingsInputSvideoIcon/>
+                        </IconButton>
+                        <Typography variant='h5' color='common.white'>Logo</Typography>
+                    </Box>
+                </Link>
                 <Box sx={{
                     display: 'flex',
                     flexDirection: 'row',
