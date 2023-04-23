@@ -32,7 +32,6 @@ export default function HomePage({products}) {
           ))
         }
       </Box>
-    
     </Layout>
   )
 }

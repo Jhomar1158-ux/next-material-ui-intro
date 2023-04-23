@@ -8,7 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FitbitIcon from '@mui/icons-material/Fitbit';
+import { useRouter } from 'next/router';
 export const Navbar = () => {
+    const router = useRouter();
+
+    const onClick = () => {
+        router.push('/');
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -23,7 +30,7 @@ export const Navbar = () => {
                     display: 'flex',
                     justifyContent: 'space-between',
                 }}>
-                    <Box sx={{
+                    <Box onClick={onClick} sx={{
                         display: 'flex',
                         alignItems: 'center',
                         flexDirection: 'row',
