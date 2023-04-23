@@ -1,41 +1,29 @@
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import { CardMedia, Typography } from '@mui/material';
 
-export const Product = ({productInfo}) => {
-
-    const {res} = handler()
-    console.log(res)
-    // const [idProduct, setIdProduct] = React.useState(id);
-    // const [data, setData] = React.useState(null);
-    // const [isLoading, setIsLoading] = React.useState(true);
-    // const [error, setError] = React.useState(null);
-
-    // React.useEffect(() => {
-    //     async function fetchData() {
-    //     setIsLoading(true);
-    //     try {
-    //         const response = await fetch(`https://fakestoreapi.com/products/${idProduct}`);
-    //         if (!response.ok) {
-    //         throw new Error('No se pudo obtener el elemento.');
-    //         }
-    //         const data = await response.json();
-    //         setData(data);
-    //         setIsLoading(false);
-    //     } catch (error) {
-    //         setError(error.message);
-    //         setIsLoading(false);
-    //     }
-    //     }
-    //     fetchData();
-    // }, [idProduct]);
-
-    // if (isLoading) {
-    //     return <p>Loading...</p>;
-    // }
+export const Product = (item) => {
     return (
-        <div>
-            {/* {data.image}
-            {data.title}
-            {data.description} */}
-            <button>Add to Cart</button>
-        </div>
+        <Card sx={{ maxWidth: 345 }}>
+                    <CardMedia 
+                        sx={{ height: 140 }}
+                        image={item.item.data.image}
+                        title="image product"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {item.item.data.title}
+                        </Typography>
+                        <Typography gutterBottom variant="h6" component="div">
+                            {item.item.data.description}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small">{item.item.data.category}</Button>
+                        <Button size="small" disabled>Add to car</Button>
+                    </CardActions>
+        </Card>
     )
 }

@@ -4,6 +4,9 @@ import { getItems } from '@/services/storeService'
 import { Typography } from '@mui/material'
 
 export default function ProductPage({productInfo}){
+    console.log('--------------------')
+    console.log(productInfo)
+    console.log('PRODUCT INFO')
     return (
         <div>
             <Typography variant='h3'>My Shop</Typography>
@@ -13,7 +16,6 @@ export default function ProductPage({productInfo}){
     </div>
     )
 }
-
 
 
 export async function getPathsFromIds() {
@@ -32,8 +34,11 @@ export async function getPathsFromIds() {
 
 export async function getItemData(id){
     const items = await getItems()
-
-    return items.find((item) => item.id === id);
+    const product = items.find((item) => item.id === id);
+    return {
+        id,
+        data: product,
+    };
 }
 
 export async function getStaticPaths(){
@@ -47,11 +52,16 @@ export async function getStaticPaths(){
 
 
 export async function getStaticProps({params}){
-    const id = params.id;
-    const product = await getItemData(5);
+    const id = parseInt(params.id);
+    console.log('------------------PARAMS ------------------')
+    console.log(params)
+    console.log(params.id)
+    console.log('----------------------------------------')
+
+    const productInfo = await getItemData(id);
     return {
         props:{
-            productInfo: product
+            productInfo
         }
     }
 
