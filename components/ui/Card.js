@@ -5,18 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Product } from './Product';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function MediaCard({title, image, price, id}) {
 
     return (
-        <>
             <Link href={`/product/${id}`}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 300 }}>
                     <CardMedia
-                        sx={{ height: 140 }}
+                        sx={{ height: 200 }}
                         image={image}
                         title="image product"
                     />
@@ -31,7 +28,6 @@ export default function MediaCard({title, image, price, id}) {
                     </CardActions>
                 </Card>
             </Link>
-        </>
 
     );
 }

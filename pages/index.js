@@ -1,32 +1,36 @@
 
 import { Layout } from '@/components/layouts'
 import MediaCard from '@/components/ui/Card'
-import { Typography } from '@mui/material'
+import { getItems } from '@/services/storeService'
+import { Box, Typography} from '@mui/material'
 import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function HomePage() {
-
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('https://fakestoreapi.com/products');
-      const data = await response.json();
-      setData(data);
-    }
-    fetchData();
-  }, []);
-
+export default function HomePage({items}) {
   return (
     <div>
-      <Typography variant='h3'>My Shop</Typography>
+      <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    p: 1,
+                    m: 1,
+                }}>
+        <Typography variant='h3' color='common.black'>My Shop</Typography>
+      </Box>
       <Layout>
-        {data ? (
-          <ul>
-            {data.map((item) => (
+        {items ? (
+          <Box sx={{
+            padding: '20px', 
+            margin: '0 0 15px 0',
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            width: '100%' 
+        }}>
+            {items.map((item) => (
               (<MediaCard
               key={item.id}
               id = {item.id}
@@ -35,11 +39,22 @@ export default function HomePage() {
               price={item.price}
               />)
             ))}
-          </ul>
+          </Box>
         ) : (
           <p>Loading...</p>
         )}
       </Layout>
     </div>
   )
+}
+
+
+export async function getStaticProps() {
+  const res = await getItems();
+
+  return {
+    props: {
+      items: res,
+    },
+  };
 }

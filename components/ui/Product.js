@@ -1,29 +1,35 @@
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import { CardMedia, Typography } from '@mui/material';
+import { CardActionArea, CardMedia, Container, CssBaseline, Grid, Typography } from '@mui/material';
 
 export const Product = (item) => {
+    // item.item.data.title
     return (
-        <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia 
-                        sx={{ height: 140 }}
-                        image={item.item.data.image}
-                        title="image product"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {item.item.data.title}
-                        </Typography>
-                        <Typography gutterBottom variant="h6" component="div">
-                            {item.item.data.description}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small">{item.item.data.category}</Button>
-                        <Button size="small" disabled>Add to car</Button>
-                    </CardActions>
-        </Card>
+        <Grid item xs={12} md={6}>
+            <CardActionArea component="a" href="#">
+                <Card sx={{ display: 'flex' }}>
+                <CardContent sx={{ flex: 1 }}>
+                    <Typography component="h2" variant="h5">
+                    {item.item.data.title}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                    {item.item.data.description}
+                    </Typography>
+                    <Typography variant="subtitle1" paragraph>
+                    Category: {item.item.data.category}
+                    </Typography>
+                    <Typography variant="subtitle1" color="primary">
+                    Add to cart!
+                    </Typography>
+                </CardContent>
+                <CardMedia
+                    component="img"
+                    sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
+                    image={item.item.data.image}
+                    alt={item.item.data.title}
+                />
+                </Card>
+            </CardActionArea>
+        </Grid>
     )
 }

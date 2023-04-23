@@ -1,22 +1,26 @@
 import { Layout } from '@/components/layouts'
 import { Product } from '@/components/ui'
 import { getItems } from '@/services/storeService'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 export default function ProductPage({productInfo}){
-    console.log('--------------------')
-    console.log(productInfo)
-    console.log('PRODUCT INFO')
+
     return (
         <div>
-            <Typography variant='h3'>My Shop</Typography>
+            <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    p: 1,
+                    m: 1,
+                }}>
+            <Typography variant='h3' color='common.black'>My Shop</Typography>
+            </Box>
             <Layout>
                 <Product item={productInfo}/>
             </Layout>
     </div>
     )
 }
-
 
 export async function getPathsFromIds() {
     const products = await getItems()
@@ -50,14 +54,8 @@ export async function getStaticPaths(){
     }
 }
 
-
 export async function getStaticProps({params}){
     const id = parseInt(params.id);
-    console.log('------------------PARAMS ------------------')
-    console.log(params)
-    console.log(params.id)
-    console.log('----------------------------------------')
-
     const productInfo = await getItemData(id);
     return {
         props:{
