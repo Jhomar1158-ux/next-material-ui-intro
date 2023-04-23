@@ -1,19 +1,16 @@
 
 import { Layout } from '@/components/layouts'
-import { Product } from '@/components/ui'
 import MediaCard from '@/components/ui/Card'
 import { Typography } from '@mui/material'
 import { Inter } from 'next/font/google'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function HomePage() {
 
-  const [data, setData] = React.useState(null);
-  const [productPage, setProductPage] = React.useState(true)
-
+  const [data, setData] = useState(null);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('https://fakestoreapi.com/products');
@@ -36,7 +33,6 @@ export default function HomePage() {
               title={item.title}
               image={item.image}
               price={item.price}
-              setProductPage={setProductPage}
               />)
             ))}
           </ul>

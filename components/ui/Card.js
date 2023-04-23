@@ -7,17 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Product } from './Product';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-export default function MediaCard({title, image, price, key}) {
-    
-    // const [productPage, setProductPage] = React.useState(productPageBool)
-    const router = useRouter();
-    const handleClick = () =>{
-        router.push(`/product?id=${1}`);
-    }
+export default function MediaCard({title, image, price, id}) {
+
     return (
         <>
-            <button onClick={handleClick}>
+            <Link href={`/product/${id}`}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
@@ -34,7 +30,7 @@ export default function MediaCard({title, image, price, key}) {
                         <Button size="small" disabled>Add to car</Button>
                     </CardActions>
                 </Card>
-            </button>
+            </Link>
         </>
 
     );

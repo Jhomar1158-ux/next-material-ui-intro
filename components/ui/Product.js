@@ -1,38 +1,40 @@
-import React from 'react'
 
-export const Product = ({id}) => {
-    const [idProduct, setIdProduct] = React.useState(id);
-    const [data, setData] = React.useState(null);
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [error, setError] = React.useState(null);
+export const Product = ({productInfo}) => {
 
-    React.useEffect(() => {
-        async function fetchData() {
-        setIsLoading(true);
-        try {
-            const response = await fetch(`https://fakestoreapi.com/products/${idProduct}`);
-            if (!response.ok) {
-            throw new Error('No se pudo obtener el elemento.');
-            }
-            const data = await response.json();
-            setData(data);
-            setIsLoading(false);
-        } catch (error) {
-            setError(error.message);
-            setIsLoading(false);
-        }
-        }
-        fetchData();
-    }, [idProduct]);
+    const {res} = handler()
+    console.log(res)
+    // const [idProduct, setIdProduct] = React.useState(id);
+    // const [data, setData] = React.useState(null);
+    // const [isLoading, setIsLoading] = React.useState(true);
+    // const [error, setError] = React.useState(null);
 
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
+    // React.useEffect(() => {
+    //     async function fetchData() {
+    //     setIsLoading(true);
+    //     try {
+    //         const response = await fetch(`https://fakestoreapi.com/products/${idProduct}`);
+    //         if (!response.ok) {
+    //         throw new Error('No se pudo obtener el elemento.');
+    //         }
+    //         const data = await response.json();
+    //         setData(data);
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         setError(error.message);
+    //         setIsLoading(false);
+    //     }
+    //     }
+    //     fetchData();
+    // }, [idProduct]);
+
+    // if (isLoading) {
+    //     return <p>Loading...</p>;
+    // }
     return (
         <div>
-            {data.image}
+            {/* {data.image}
             {data.title}
-            {data.description}
+            {data.description} */}
             <button>Add to Cart</button>
         </div>
     )
